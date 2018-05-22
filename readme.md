@@ -34,6 +34,11 @@ CREATE TABLE posts(
 );
 ```
 
+## Inserir usuario
+```
+INSERT INTO users(name,email,pass) VALUES ('admin','admin@admin.com','$2y$10$UXXORkbFoy8jD824eN3f6OeguAWTqVA1QdHxSPUCM2Ku1PBsBpYi2');
+```
+
 ## Estrutura de Pastas e arquivos
 ```
 ├── app
