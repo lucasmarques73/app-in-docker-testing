@@ -13,6 +13,8 @@ class Connection
 
 	public static function getInstance()
 	{
+		global $config;
+		
 		if (!self::$instance) {
 			self::$instance = new PDO($config['dbdsn'],$config['dbuser'],$config['dbpass']);
 

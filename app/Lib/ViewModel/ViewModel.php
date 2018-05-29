@@ -4,13 +4,21 @@ namespace Lib\ViewModel;
 
 class ViewModel
 {
-	private $header = $config['basedir'].'/app/View/layout/header.php';
-	private $footer = $config['basedir'].'/app/View/layout/footer.php';
+	private $header;
+	private $footer;
+	private $basedir;
 
+	public function __construct()
+	{
+		global $config;
+		$this->header = $config['basedir'].'/app/View/layout/header.php';
+		$this->footer = $config['basedir'].'/app/View/layout/footer.php';
+		$this->basedir = $config['basedir'];
+	}
 
 	public function render(string $view, array $data = null)
 	{
-		$container = $config['basedir'].'/app/View/'.$view.'.php';
+		$container = $this->basedir.'/app/View/'.$view.'.php';
 		$this->loadPage($container,$data);
 	}
 
