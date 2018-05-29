@@ -4,13 +4,13 @@ namespace Lib\ViewModel;
 
 class ViewModel
 {
-	private $header = BASEDIR.'/app/View/layout/header.php';
-	private $footer = BASEDIR.'/app/View/layout/footer.php';
+	private $header = $config['basedir'].'/app/View/layout/header.php';
+	private $footer = $config['basedir'].'/app/View/layout/footer.php';
 
 
 	public function render(string $view, array $data = null)
 	{
-		$container = BASEDIR.'/app/View/'.$view.'.php';
+		$container = $config['basedir'].'/app/View/'.$view.'.php';
 		$this->loadPage($container,$data);
 	}
 

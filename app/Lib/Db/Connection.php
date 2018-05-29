@@ -14,7 +14,7 @@ class Connection
 	public static function getInstance()
 	{
 		if (!self::$instance) {
-			self::$instance = new PDO(DBDSN,DBUSER,DBPASS);
+			self::$instance = new PDO($config['dbdsn'],$config['dbuser'],$config['dbpass']);
 
 			self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		}

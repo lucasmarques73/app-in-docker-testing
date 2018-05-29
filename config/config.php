@@ -1,9 +1,13 @@
 <?php 
 
-const BASEDIR = '/var/www/html';
+$config = [
+	'basedir' => getenv('PWD'),
+	'dbuser'  => getenv('DBUSER'),
+	'dbpass'  => getenv('DBPASS'),
+	'dbname'  => getenv('DBNAME'),
+	'dbhost'  => getenv('DBHOST'),
+	'dbdriver'  => getenv('DBDRIVER')
+];
 
-const DBUSER = 'lucas';
-const DBPASS = '123';
-const DBNAME = 'aula';
-const DBHOST = 'database';
-const DBDSN = 'pgsql:host='.DBHOST.';dbname='.DBNAME;
+//'pgsql:host='.DBHOST.';dbname='.DBNAME;
+$config['dbdsn'] = $config['dbdriver'].':host='.$config['dbhost'].';dbname='.$config['dbname'];
