@@ -39,6 +39,8 @@ class LoginController
 			$_SESSION['logged'] = true;
 			$_SESSION['user'] = $user;
 			header('location: ?r=post');
+		} else {
+			$this->logout();
 		}
 	}
 
