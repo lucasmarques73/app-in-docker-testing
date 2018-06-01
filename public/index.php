@@ -1,7 +1,5 @@
 <?php 
 
-require '../vendor/autoload.php';
-
 require '../config/bootstrap.php';
 
 require '../routes/route.php';

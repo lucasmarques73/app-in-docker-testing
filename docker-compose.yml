@@ -4,6 +4,7 @@ services:
 
         app:
            build: docker
+           container_name: app-blog
            user: root
            volumes:
               - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
@@ -12,8 +13,12 @@ services:
 
         database:
            image: postgres
-           env_file:
-              - .env
+           ports:
+              - "${DBPORT}:${DBPORT}"
+           environment:
+              - "POSTGRES_DB=${DBNAME}"
+              - "POSTGRES_USER=${DBUSER}"
+              - "POSTGRES_PASSWORD=${DBPASS}"           
         composer:
            image: composer
            volumes:

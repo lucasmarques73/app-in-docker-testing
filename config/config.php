@@ -1,12 +1,17 @@
 <?php 
 
 $config = [
-	'basedir' => getenv('PWD'),
+	'basedir' => getenv('BASEDIR'),
 	'dbuser'  => getenv('DBUSER'),
 	'dbpass'  => getenv('DBPASS'),
 	'dbname'  => getenv('DBNAME'),
 	'dbhost'  => getenv('DBHOST'),
-	'dbdriver'  => getenv('DBDRIVER')
+	'dbport'  => getenv('DBPORT'),
+	'dbdriver'  => getenv('DBDRIVER'),
+	'dbcharset'  => getenv('DBCHARSET'),
+	'dbcollation'  => getenv('DBCOLLATION'),
+	'dbtable_prefix'  => getenv('DBTABLEPREFIX'),
+	'dbtable_suffix'  => getenv('DBTABLESUFFIX'),
 ];
 
 //'pgsql:host='.DBHOST.';dbname='.DBNAME;
