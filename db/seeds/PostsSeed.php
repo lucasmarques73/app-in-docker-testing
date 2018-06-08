@@ -7,7 +7,7 @@ class PostsSeed extends AbstractSeed
 { 
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create('pt_BR');
         $data = [];
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
