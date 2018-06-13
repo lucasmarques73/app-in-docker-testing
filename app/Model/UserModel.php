@@ -45,6 +45,9 @@ class UserModel
 		$where = "email='{$data['email']}'";
 		$user = $this->userMapper->find('*',$where);
 		
+		if(!$user){
+			return false;
+		}
 		if (password_verify($data['pass'],$user->getPass())) {
 			return $user;
 		} else {
