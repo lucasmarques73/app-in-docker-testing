@@ -36,7 +36,6 @@ http://app.local:8000
 ```
 docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/phinx
 ```
-
 - migrate
 - seed:run -s UsersSeed
 - seed:run -s PostsSeed
@@ -46,8 +45,12 @@ docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/phinx
 ```
 docker run -it --rm -u "$(id -u):$(id -g)" -v "$PWD":/app -w /app composer
 ```
-
 - install
+
+### DOCTRINE
+```
+docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/doctrine
+```
 
 ### DOCKER
 Up application first time
