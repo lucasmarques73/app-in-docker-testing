@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
 $paths = [
-    __DIR__ . '/Entity'
+   dirname( __DIR__) . '/app/Model/Entity'
 ];
 
 $isDevMode = true;
@@ -16,7 +16,9 @@ $dbParams = [
     'driver' => 'pdo_'.getenv('DBDRIVER'),
     'user' => getenv('DBUSER'),
     'password' => getenv('DBPASS'),
-    'dbname' => getenv('DBNAME')
+    'dbname' => getenv('DBNAME'),
+    'host' => getenv('DBHOST'),
+    'port' => getenv('DBPORT')
 ];
 
 $config = Setup::createAnnotationMetadataConfiguration($paths,$isDevMode);
