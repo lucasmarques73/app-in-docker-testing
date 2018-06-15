@@ -15,9 +15,9 @@ class PostsMigration extends AbstractMigration
               ->addIndex(['title'], [
                     'unique' => true,
                     'name' => 'idx_posts_titles'])
-              ->addColumn('content', 'text',['null' => false])
+              ->addColumn('content', 'text',['null' => true])
               ->addColumn('created_at', 'date',['default' => 'CURRENT_TIMESTAMP'])
-              ->addColumn('published', 'boolean',['default' => true])
+              ->addColumn('published', 'boolean',['default' => false])
               ->addColumn('user_id', 'integer')
               ->addForeignKey('user_id','users','id')
               ->save();
