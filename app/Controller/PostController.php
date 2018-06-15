@@ -4,7 +4,6 @@ namespace Controller;
 
 use Lib\ViewModel\ViewModel;
 use Model\PostModel;
-use Controller\LoginController;
 
 class PostController
 {

@@ -2,7 +2,6 @@
 
 namespace Lib\Db;
 
-use Lib\Db\Connection;
 use PDO;
 use PDOStatement;
 use PDOException;
