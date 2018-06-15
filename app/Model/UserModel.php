@@ -3,7 +3,6 @@
 namespace Model;
 
 use Model\Mapper\UserMapper;
-use Model\Entity\User;
 
 class UserModel
 {

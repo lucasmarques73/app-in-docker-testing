@@ -3,7 +3,6 @@
 namespace Model;
 
 use Model\Mapper\PostMapper;
-use Model\Entity\Post;
 
 class PostModel
 {
