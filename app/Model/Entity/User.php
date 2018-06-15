@@ -11,8 +11,7 @@ class User
 	/**
 	 * @Id
 	 * @Column(type="integer")
-     * @GeneratedValue(strategy="SEQUENCE")
-	 * @SequenceGenerator(sequenceName="tb_users_id_seq", initialValue=1)
+     * @GeneratedValue(strategy="AUTO")
 	 */
 	private $id;
 
@@ -32,7 +31,7 @@ class User
 	private $pass;
 
 	/**
-     * @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist"}, mappedBy="user")
+	 * @OneToMany(targetEntity="Model\Entity\Post", mappedBy="user")
      */
 	private $posts;
 

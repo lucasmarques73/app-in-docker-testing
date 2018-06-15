@@ -39,6 +39,7 @@ docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/phinx
 - migrate
 - seed:run -s UsersSeed
 - seed:run -s PostsSeed
+- rollback -t 0 
 
 
 ### COMPOSER
@@ -51,6 +52,8 @@ docker run -it --rm -u "$(id -u):$(id -g)" -v "$PWD":/app -w /app composer
 ```
 docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/doctrine
 ```
+- orm:validate-schema
+- orm:validate-schema
 
 ### DOCKER
 Up application first time

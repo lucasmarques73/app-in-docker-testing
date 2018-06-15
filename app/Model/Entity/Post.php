@@ -11,8 +11,7 @@ class Post
 	/**
 	 * @Id
 	 * @Column(type="integer")
-     * @GeneratedValue(strategy="SEQUENCE")
-	 * @SequenceGenerator(sequenceName="tb_posts_id_seq", initialValue=1)
+     * @GeneratedValue(strategy="AUTO")
 	 */
 	private $id;
 
@@ -37,12 +36,7 @@ class Post
 	private $published;
 
 	/**
-	 * @Column(type="integer")
-	 */
-	private $userId;
-
-	/**
-     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist"},inversedBy="posts")
+     * @ManyToOne(targetEntity="Model\Entity\User", inversedBy="posts")
      */
 	private $user;
 
@@ -89,15 +83,6 @@ class Post
 	public function setPublished($published)
 	{
 		$this->published = $published;
-		return $this;
-	}
-	public function getUser_id()
-	{
-	    return $this->user_id;
-	}
-	public function setUser_id($user_id)
-	{
-		$this->user_id = $user_id;
 		return $this;
 	}
 	public function getUser()
