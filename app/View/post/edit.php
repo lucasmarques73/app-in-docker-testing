@@ -13,7 +13,7 @@
 	<textarea class="form-control form-control-sm" name="content"><?=$post->getContent() ?></textarea>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input" type="checkbox" name="published" <?= ($post->getPublished()) ? 'checked' : null; ?> id="defaultCheck1">
+	  <input class="form-check-input" type="checkbox" style="margin-left: 0" name="published" <?= ($post->getPublished()) ? 'checked' : null; ?> id="defaultCheck1">
 	  <label class="form-check-label" for="defaultCheck1">
 	    Published
 	  </label>

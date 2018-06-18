@@ -17,7 +17,7 @@
 	<?php foreach ($posts as $post): ?>
 			<tr>
 				<td><?=$post->getTitle() ?></td>
-				<td><?=$post->getCreated_at() ?></td>
+				<td><?=$post->getCreated_at()->format('m/d/Y') ?></td>
 				<td><?=$post->getPublished() ? 'Published' : 'Not Published'  ?></td>
 				<td>
 				<div class="row">

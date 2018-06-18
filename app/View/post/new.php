@@ -8,7 +8,7 @@
 	<textarea class="form-control form-control-sm" name="content"></textarea>
 	</div>
 	<div class="form-check">
-	  <input class="form-check-input" type="checkbox" name="published" id="defaultCheck1">
+	  <input class="form-check-input" type="checkbox" style="margin-left: 0" name="published" id="defaultCheck1">
 	  <label class="form-check-label" for="defaultCheck1">
 	    Published
 	  </label>
