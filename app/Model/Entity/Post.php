@@ -38,7 +38,7 @@ class Post
 	private $published;
 
 	/**
-     * @ManyToOne(targetEntity="Model\Entity\User",{"persist", "remove", "merge"}, inversedBy="posts")
+     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist", "remove", "merge"}, inversedBy="posts")
      */
 	private $user;
 
