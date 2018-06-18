@@ -2,10 +2,11 @@
 
 namespace Model\Entity;
 
+use Model\Entity\Post;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Entity
+ * @Entity(repositoryClass="Model\Repository\UserRepository")
  * @Table(name="tb_users")
  */
 class User
@@ -33,7 +34,7 @@ class User
 	private $pass;
 
 	/**
-	 * @OneToMany(targetEntity="Model\Entity\Post", mappedBy="user")
+	 * @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist"}, mappedBy="user")
      */
 	private $posts;
 
@@ -83,9 +84,10 @@ class User
 	{
 	    return $this->posts;
 	}
-	public function setPosts($posts)
+	public function setPosts(Post $posts)
 	{
-		$this->posts = $posts;
+		$this->posts->add($posts);
+		$post->setUser($this);
 		return $this;
 	}
 }

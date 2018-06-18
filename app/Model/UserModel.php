@@ -2,47 +2,55 @@
 
 namespace Model;
 
-use Model\Mapper\UserMapper;
+use Model\Entity\User;
 
 class UserModel
 {
-	private $userMapper;
+	private $userRepository;
 
 	public function __construct()
 	{
-		$this->userMapper = new UserMapper();
+		$this->userRepository =  getEntityManager()->getRepository(User::class);
 	}
 
-	public function create(array $user)
+	public function create(array $data)
 	{
-		$this->userMapper->insert($user);
+		$user = new User();
+		$user->setName($data['name']);
+		$user->setEmail($data['email']);
+		$user->setPass($data['pass']);
+		$this->userRepository->save($user);
 	}
 
-	public function edit(array $user)
+	public function edit(array $data)
 	{
-		$id = 'id='.$user['id'];
-		$this->userMapper->update($user,$id);
+		$user = $this->userRepository->findOneById($data['id']);
+		$user->setName($data['name']);
+		$user->setEmail($data['email']);
+		$user->setPass($data['pass']);
+		$this->userRepository->save($user);
 	}
 
-	public function findOne(int $id)
+	public function find(int $id)
 	{
-		return $this->userMapper->find('*','id='.$id);
+		return $this->userRepository->findOneById($id);
 	}
 
 	public function all()
 	{
-		return $this->userMapper->findAll('*',null,null,'id');
+		return $this->userRepository->findAll();
 	}
 
 	public function delete(int $id)
 	{
-		$this->userMapper->delete('id='.$id);
+		$user = $this->userRepository->findOneById($id);
+		$this->userRepository->remove($user);
 	}
 
 	public function login(array $data)
 	{
-		$where = "email='{$data['email']}'";
-		$user = $this->userMapper->find('*',$where);
+		$user = $this->userRepository->findOneByEmail($data['email']);
+		dump(getEntityManager()->getUnitOfWork()->getEntityState($user));
 		
 		if(!$user){
 			return false;
