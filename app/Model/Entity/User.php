@@ -34,7 +34,7 @@ class User
 	private $pass;
 
 	/**
-	 * @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist"}, mappedBy="user")
+	 * @OneToMany(targetEntity="Model\Entity\Post",{"persist", "remove", "merge"}, mappedBy="user")
      */
 	private $posts;
 
