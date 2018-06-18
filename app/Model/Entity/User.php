@@ -2,6 +2,8 @@
 
 namespace Model\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * @Entity
  * @Table(name="tb_users")
