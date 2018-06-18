@@ -32,15 +32,13 @@ class PostController
 	public function edit($id)
 	{	
 		LoginController::isLogged();
-		$post = $this->postModel->findOne($id);
+		$post = $this->postModel->find($id);
 		$this->viewModel->render('post/edit',['post'=>$post]);
 	}
 
 	public function create()
 	{
 		LoginController::isLogged();
-		$_POST['created_at'] = date('Y-m-d');
-		$_POST['user_id'] = LoginController::userLogged()->getId();
 		$this->postModel->create($_POST);
 		header('location:?r=post');
 	}

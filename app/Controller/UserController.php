@@ -32,7 +32,7 @@ class UserController
 	public function edit($id)
 	{	
 		LoginController::isLogged();
-		$user = $this->userModel->findOne($id);
+		$user = $this->userModel->find($id);
 		$this->viewModel->render('user/edit',['user'=>$user]);
 	}
 
