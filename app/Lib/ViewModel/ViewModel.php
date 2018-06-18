@@ -28,8 +28,8 @@ class ViewModel
 			extract($data);
 			unset($data);
 		}
-		include $this->header;
-		include $container;
-		include $this->footer;
+		include_once $this->header;
+		include_once $container;
+		include_once $this->footer;
 	}
 }
