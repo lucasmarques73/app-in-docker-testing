@@ -2,8 +2,10 @@
 
 namespace Model\Entity;
 
+use Model\Entity\User;
+
 /**
- * @Entity
+ * @Entity(repositoryClass="Model\Repository\PostRepository")
  * @Table(name="tb_posts")
  */
 class Post
@@ -36,7 +38,7 @@ class Post
 	private $published;
 
 	/**
-     * @ManyToOne(targetEntity="Model\Entity\User", inversedBy="posts")
+     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist"}, inversedBy="posts")
      */
 	private $user;
 
@@ -89,7 +91,7 @@ class Post
 	{
 	    return $this->user;
 	}
-	public function setUser($user)
+	public function setUser(User $user)
 	{
 		$this->user = $user;
 		return $this;
