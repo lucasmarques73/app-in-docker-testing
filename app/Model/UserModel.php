@@ -50,7 +50,6 @@ class UserModel
 	public function login(array $data)
 	{
 		$user = $this->userRepository->findOneByEmail($data['email']);
-		dump(getEntityManager()->getUnitOfWork()->getEntityState($user));
 		
 		if(!$user){
 			return false;
