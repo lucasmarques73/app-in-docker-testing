@@ -1,8 +1,10 @@
 <?php 
 
-require '../config/bootstrap.php';
+require_once '../config/bootstrap.php';
 
-require '../routes/route.php';
+require_once '../config/doctrine.php';
+
+require_once '../routes/route.php';
 
 session_start();
 
