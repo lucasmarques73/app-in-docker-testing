@@ -27,7 +27,7 @@ class PostModel
 
 	public function edit(array $data)
 	{
-		$post = $this->postRepository->findOneById($id);
+		$post = $this->postRepository->findOneById($data['id']);
 		$post->setTitle($data['title']);
 		$post->setContent($data['content']);
 		$post->setPublished($data['published']);
