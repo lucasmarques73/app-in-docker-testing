@@ -5,7 +5,7 @@ namespace Model\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Users
+ * User
  *
  * @Table(name="users", uniqueConstraints={@UniqueConstraint(name="idx_users_email", columns={"email"})})
  * @Entity(repositoryClass="Model\Repository\UserRepository")
@@ -74,9 +74,9 @@ class User
      *
      * @param string $name
      *
-     * @return Users
+     * @return User
      */
-    public function setName($name)
+    public function setName(string $name): User
     {
         $this->name = $name;
 
@@ -88,7 +88,7 @@ class User
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -98,9 +98,9 @@ class User
      *
      * @param string $email
      *
-     * @return Users
+     * @return User
      */
-    public function setEmail($email)
+    public function setEmail(string $email): User
     {
         $this->email = $email;
 
@@ -112,7 +112,7 @@ class User
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -122,9 +122,9 @@ class User
      *
      * @param string $pass
      *
-     * @return Users
+     * @return User
      */
-    public function setPass($pass)
+    public function setPass(string $pass): User
     {
         $this->pass = $pass;
 
@@ -136,7 +136,7 @@ class User
      *
      * @return string
      */
-    public function getPass()
+    public function getPass(): string
     {
         return $this->pass;
     }
@@ -146,9 +146,9 @@ class User
      *
      * @param \Model\Entity\Post $post
      *
-     * @return Users
+     * @return User
      */
-    public function addPost(\Model\Entity\Post $post)
+    public function addPost(\Model\Entity\Post $post): User
     {
         $this->posts->add($post);
         $post->setUser($this);

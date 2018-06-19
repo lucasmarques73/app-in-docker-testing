@@ -63,7 +63,7 @@ class Post
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -73,9 +73,9 @@ class Post
      *
      * @param string $title
      *
-     * @return Posts
+     * @return Post
      */
-    public function setTitle($title)
+    public function setTitle(string $title): Post
     {
         $this->title = $title;
 
@@ -87,7 +87,7 @@ class Post
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -97,9 +97,9 @@ class Post
      *
      * @param string|null $content
      *
-     * @return Posts
+     * @return Post
      */
-    public function setContent($content = null)
+    public function setContent(string $content = null): Post
     {
         $this->content = $content;
 
@@ -111,7 +111,7 @@ class Post
      *
      * @return string|null
      */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -121,9 +121,9 @@ class Post
      *
      * @param \DateTime $createdAt
      *
-     * @return Posts
+     * @return Post
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt): Post
     {
         $this->createdAt = $createdAt;
 
@@ -135,7 +135,7 @@ class Post
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
@@ -145,9 +145,9 @@ class Post
      *
      * @param bool $published
      *
-     * @return Posts
+     * @return Post
      */
-    public function setPublished($published)
+    public function setPublished(bool $published = false): Post
     {
         $this->published = $published;
 
@@ -159,7 +159,7 @@ class Post
      *
      * @return bool
      */
-    public function getPublished()
+    public function getPublished(): bool
     {
         return $this->published;
     }
@@ -169,9 +169,9 @@ class Post
      *
      * @param \Model\Entity\User|null $user
      *
-     * @return Posts
+     * @return Post
      */
-    public function setUser(\Model\Entity\User $user = null)
+    public function setUser(\Model\Entity\User $user = null): Post
     {
         $this->user = $user;
 
@@ -183,7 +183,7 @@ class Post
      *
      * @return \Model\Entity\User|null
      */
-    public function getUser()
+    public function getUser(): ?\Model\Entity\User
     {
         return $this->user;
     }
