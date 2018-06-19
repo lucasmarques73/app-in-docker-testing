@@ -2,8 +2,10 @@
 
 namespace Model\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
- * User
+ * Users
  *
  * @Table(name="users", uniqueConstraints={@UniqueConstraint(name="idx_users_email", columns={"email"})})
  * @Entity(repositoryClass="Model\Repository\UserRepository")
@@ -13,7 +15,7 @@ class User
     /**
      * @var int
      *
-     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="id", type="integer", nullable=false)
      * @Id
      * @GeneratedValue(strategy="SEQUENCE")
      * @SequenceGenerator(sequenceName="users_id_seq", allocationSize=1, initialValue=1)
@@ -23,24 +25,39 @@ class User
     /**
      * @var string
      *
-     * @Column(name="name", type="string", length=150, precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="name", type="string", length=150, nullable=false)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @Column(name="email", type="string", length=100, precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="email", type="string", length=100, nullable=false)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @Column(name="pass", type="string", length=100, precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="pass", type="string", length=100, nullable=false)
      */
     private $pass;
 
+    /**
+     *  @var \Model\Entity\Post[]
+     *
+     *  @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist", "remove", "merge"}, mappedBy="user")
+     */
+
+    private $posts;
+
+    /**
+     * User constructor
+     */
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -122,5 +139,29 @@ class User
     public function getPass()
     {
         return $this->pass;
+    }
+
+    /**
+     * Set post.
+     *
+     * @param \Model\Entity\Post $post
+     *
+     * @return Users
+     */
+    public function addPost(\Model\Entity\Post $post)
+    {
+        $this->posts->add($post);
+        $post->setUser($this);
+        return $this;
+    }
+
+    /**
+     * Get posts.
+     *
+     * @return \Model\Entity\Post[]|null
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
