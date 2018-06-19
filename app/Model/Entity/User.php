@@ -46,7 +46,7 @@ class User
     /**
      *  @var \Model\Entity\Post[]
      *
-     *  @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist", "remove", "merge"}, mappedBy="user")
+     *  @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist", "merge"}, mappedBy="user")
      */
 
     private $posts;

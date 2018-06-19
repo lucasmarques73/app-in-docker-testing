@@ -51,7 +51,7 @@ class Post
     /**
      * @var \Model\Entity\User
      *
-     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist", "remove", "merge"}, inversedBy="posts")
+     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist", "merge"}, inversedBy="posts")
      * @JoinColumns({
      *   @JoinColumn(name="user_id", referencedColumnName="id")
      * })
