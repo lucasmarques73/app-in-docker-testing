@@ -18,7 +18,7 @@ class UserModel
 		$user = new User();
 		$user->setName($data['name']);
 		$user->setEmail($data['email']);
-		$user->setPass($data['pass']);
+		$user->setPass(Password::makeHash($data['pass']));
 		$this->userRepository->save($user);
 	}
 
@@ -27,7 +27,6 @@ class UserModel
 		$user = $this->userRepository->findOneById($data['id']);
 		$user->setName($data['name']);
 		$user->setEmail($data['email']);
-		$user->setPass($data['pass']);
 		$this->userRepository->save($user);
 	}
 
@@ -54,7 +53,7 @@ class UserModel
 		if(!$user){
 			return false;
 		}
-		if (password_verify($data['pass'],$user->getPass())) {
+		if (Password::verify($data['pass'],$user->getPass())) {
 			return $user;
 		} else {
 			return false;

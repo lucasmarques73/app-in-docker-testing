@@ -53,7 +53,8 @@ docker run -it --rm -u "$(id -u):$(id -g)" -v "$PWD":/app -w /app composer
 docker exec -it -u "$(id -u):$(id -g)" -w /app app-blog php vendor/bin/doctrine
 ```
 - orm:validate-schema
-- orm:validate-schema
+- orm:convert-mapping --from-database --namespace="Model\Entity\\" annotation ./app/Model/Entity
+- orm:generate-entities --generate-annotations=true --generate-methods=true  app/Model/Entity   
 
 ### DOCKER
 Up application first time

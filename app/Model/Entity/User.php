@@ -1,93 +1,126 @@
-<?php 
+<?php
 
 namespace Model\Entity;
 
-use Model\Entity\Post;
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
+ * User
+ *
+ * @Table(name="users", uniqueConstraints={@UniqueConstraint(name="idx_users_email", columns={"email"})})
  * @Entity(repositoryClass="Model\Repository\UserRepository")
- * @Table(name="tb_users")
  */
 class User
 {
-	/**
-	 * @Id
-	 * @Column(type="integer")
-     * @GeneratedValue(strategy="AUTO")
-	 */
-	private $id;
-
-	/**
-	 * @Column(type="string", length=150)
-	 */
-	private $name;
-
-	/**
-	 * @Column(type="string", length=100, unique=true)
-	 */
-	private $email;
-
-	/**
-	 * @Column(type="string", length=100)
-	 */
-	private $pass;
-
-	/**
-	 * @OneToMany(targetEntity="Model\Entity\Post",cascade={"persist", "remove", "merge"}, mappedBy="user")
+    /**
+     * @var int
+     *
+     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Id
+     * @GeneratedValue(strategy="SEQUENCE")
+     * @SequenceGenerator(sequenceName="users_id_seq", allocationSize=1, initialValue=1)
      */
-	private $posts;
+    private $id;
 
-	public function __construct()
+    /**
+     * @var string
+     *
+     * @Column(name="name", type="string", length=150, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @Column(name="email", type="string", length=100, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @Column(name="pass", type="string", length=100, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $pass;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
     {
-        $this->posts = new ArrayCollection();
+        return $this->id;
     }
 
-	public function getId()
-	{
-	    return $this->id;
-	}
-	public function setId($id)
-	{
-		$this->id = $id;
-		return $this;
-	}
-	public function getName()
-	{
-	    return $this->name;
-	}
-	public function setName($name)
-	{
-		$this->name = $name;
-		return $this;
-	}
-	public function getEmail()
-	{
-	    return $this->email;
-	}
-	public function setEmail($email)
-	{
-		$this->email = $email;
-		return $this;
-	}
-	public function getPass()
-	{
-	    return $this->pass;
-	}
-	public function setPass($pass)
-	{	
-		$pass = password_hash($pass,PASSWORD_BCRYPT);
-		$this->pass = $pass;
-		return $this;
-	}
-	public function getPosts()
-	{
-	    return $this->posts;
-	}
-	public function setPosts(Post $posts)
-	{
-		$this->posts->add($posts);
-		$post->setUser($this);
-		return $this;
-	}
+    /**
+     * Set name.
+     *
+     * @param string $name
+     *
+     * @return Users
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set email.
+     *
+     * @param string $email
+     *
+     * @return Users
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email.
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set pass.
+     *
+     * @param string $pass
+     *
+     * @return Users
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    /**
+     * Get pass.
+     *
+     * @return string
+     */
+    public function getPass()
+    {
+        return $this->pass;
+    }
 }

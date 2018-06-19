@@ -2,40 +2,51 @@
 
 namespace Model;
 
-use Model\Mapper\PostMapper;
+use Model\Entity\Post;
+use Controller\LoginController;
 
 class PostModel
 {
-	private $postMapper;
+	private $postRepository;
 
 	public function __construct()
 	{
-		$this->postMapper = new PostMapper();
+		$this->postRepository = getEntityManager()->getRepository(Post::class);
 	}
 
-	public function create(array $Post)
+	public function create(array $data)
 	{
-		$this->postMapper->insert($Post);
+		$post = new Post();
+		$post->setTitle($data['title']);
+		$post->setContent($data['content']);
+		$post->setCreated_at(date('Y-m-d'));
+		$post->setPublished($data['published']);
+		$post->setUser(LoginController::userLogged());
+		$this->postRepository->save($post);
 	}
 
-	public function edit(array $Post)
+	public function edit(array $data)
 	{
-		$id = 'id='.$Post['id'];
-		$this->postMapper->update($Post,$id);
+		$post = $this->postRepository->findOneById($id);
+		$post->setTitle($data['title']);
+		$post->setContent($data['content']);
+		$post->setPublished($data['published']);
+		$this->postRepository->save($post);
 	}
 
-	public function findOne(int $id)
+	public function find(int $id)
 	{
-		return $this->postMapper->find('*','id='.$id);
+		return $this->postRepository->findOneById($id);
 	}
 
 	public function all()
 	{
-		return $this->postMapper->findAll('*',null,null,'id');
+		return $this->postRepository->findAll();
 	}
 
 	public function delete(int $id)
 	{
-		$this->postMapper->delete('id='.$id);
+		$post = $this->postRepository->findOneById($id);
+		$this->postRepository->remove($post);
 	}
 }
