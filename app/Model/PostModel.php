@@ -3,6 +3,7 @@
 namespace Model;
 
 use Model\Entity\Post;
+use Model\Entity\User;
 use Controller\LoginController;
 
 class PostModel
@@ -12,6 +13,7 @@ class PostModel
 	public function __construct()
 	{
 		$this->postRepository = getEntityManager()->getRepository(Post::class);
+		$this->userRepository = getEntityManager()->getRepository(User::class);
 	}
 
 	public function create(array $data)
@@ -19,9 +21,10 @@ class PostModel
 		$post = new Post();
 		$post->setTitle($data['title']);
 		$post->setContent($data['content']);
-		$post->setCreatedAt(date('Y-m-d'));
-		$post->setPublished($data['published']);
-		$post->setUser(LoginController::userLogged());
+		$post->setCreatedAt(new \DateTime());
+		$post->setPublished(boolval($data['published']));
+		$user = $this->userRepository->findOneById(LoginController::userLogged()->getId());
+		$post->setUser($user);
 		$this->postRepository->save($post);
 	}
 
@@ -30,7 +33,7 @@ class PostModel
 		$post = $this->postRepository->findOneById($data['id']);
 		$post->setTitle($data['title']);
 		$post->setContent($data['content']);
-		$post->setPublished($data['published']);
+		$post->setPublished(boolval($data['published']));
 		$this->postRepository->save($post);
 	}
 
