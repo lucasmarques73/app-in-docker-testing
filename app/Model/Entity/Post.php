@@ -13,7 +13,7 @@ class Post
     /**
      * @var int
      *
-     * @Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="id", type="integer", nullable=false)
      * @Id
      * @GeneratedValue(strategy="SEQUENCE")
      * @SequenceGenerator(sequenceName="posts_id_seq", allocationSize=1, initialValue=1)
@@ -23,41 +23,40 @@ class Post
     /**
      * @var string
      *
-     * @Column(name="title", type="string", length=200, precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="title", type="string", length=200, nullable=false)
      */
     private $title;
 
     /**
      * @var string|null
      *
-     * @Column(name="content", type="text", precision=0, scale=0, nullable=true, unique=false)
+     * @Column(name="content", type="text", nullable=true)
      */
     private $content;
 
     /**
      * @var \DateTime
      *
-     * @Column(name="created_at", type="date", precision=0, scale=0, nullable=false, options={"default"="CURRENT_TIMESTAMP"}, unique=false)
+     * @Column(name="created_at", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
      * @var bool
      *
-     * @Column(name="published", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     * @Column(name="published", type="boolean", nullable=false)
      */
-    private $published;
+    private $published = false;
 
     /**
      * @var \Model\Entity\User
      *
-     * @ManyToOne(targetEntity="Model\Entity\User")
+     * @ManyToOne(targetEntity="Model\Entity\User",cascade={"persist", "remove", "merge"}, inversedBy="posts")
      * @JoinColumns({
-     *   @JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     *   @JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
     private $user;
-
 
     /**
      * Get id.
