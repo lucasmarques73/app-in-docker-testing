@@ -19,7 +19,7 @@ class PostModel
 		$post = new Post();
 		$post->setTitle($data['title']);
 		$post->setContent($data['content']);
-		$post->setCreated_at(date('Y-m-d'));
+		$post->setCreatedAt(date('Y-m-d'));
 		$post->setPublished($data['published']);
 		$post->setUser(LoginController::userLogged());
 		$this->postRepository->save($post);

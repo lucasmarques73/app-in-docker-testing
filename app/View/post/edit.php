@@ -6,7 +6,7 @@
 	</div>
 	<div class="form-group">
 	<label>CreatedAt:</label>
-	<input type="text" name="createdAt" value="<?=$post->getCreatedAt()->format('m/d/Y') ?>" class="form-control form-control-sm">	
+	<p class="form-control form-control-sm" style="background-color: #F0F0F0"><?= $post->getCreatedAt()->format('m/d/Y') ?></p>
 	</div>
 	<div class="form-group">
 	<label>Content:</label>
