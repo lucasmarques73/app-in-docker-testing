@@ -5,8 +5,8 @@
 	<input type="text" name="title" value="<?=$post->getTitle() ?>" class="form-control form-control-sm">	
 	</div>
 	<div class="form-group">
-	<label>Created_At:</label>
-	<input type="text" value="<?=$post->getCreated_at() ?>" class="form-control form-control-sm">	
+	<label>CreatedAt:</label>
+	<input type="text" name="createdAt" value="<?=$post->getCreatedAt()->format('m/d/Y') ?>" class="form-control form-control-sm">	
 	</div>
 	<div class="form-group">
 	<label>Content:</label>
